@@ -32,10 +32,10 @@ logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s',
                     level=logging.DEBUG)
 
 # Name of the folder that will contain training images
-_TRAINING = 'training'
+_TRAINING = 'train'
 
 # Name of the folder that will contain validation images
-_VALIDATION = 'validation'
+_VALIDATION = 'test'
 
 # Name of the folder that will contain images
 _IMAGES = 'images'
