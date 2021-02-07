@@ -5,28 +5,34 @@ Picman is a Python3 based tool that will help you to easily populate training an
 taken from your video device.   
  
 ## Requirements
-* numpy >= 1.20.0
-* argparse >= 1.4.0
-* opencv-python >= 4.5.1.48
+See [requirements.txt](requirements.txt). 
 
 ## Run
 Run:
 ```shell script
-python3 picman.py -d path_to_destination [- n img_basename] [-s size_trainingset]
+python3 picman.py -d path_to_destination 
+                  [-n img_base_name] 
+                  [-r ratio_training_set]
+                  [-t name_training_set_folder]
+                  [-v name_validation_set_folder]
+                  [-i index_video_device]
 ```
 
 args:
- * ```-d```, the path to the base destination folder, in which images will be stored;
- * ```[-n]```, the base name of images, 'img' by default;
- * ```[-s]```, the size of the training over the entire dataset in decimal number, 0.7 by default.    
+ * `-d`, the path to the base destination folder, in which images will be stored;
+ * `[-n]`, the base name of images, "img" by default;
+ * `[-r]`, the ratio of the training over the entire dataset in decimal number, 0.9 by default.
+ * `[-t]`, the name of the folder storing the training set, "train" by default.
+ * `[-v]`, the name of the folder storing the validation set, "test" by default.
+ * `[-i]`, the index of the video device, 0 (webcam) by default.    
 
 For example, by running:
 ```shell script
-python3 picman.py -d dataset - n img -s 0.8
+python3 picman.py -d dataset -n img -r 0.8
 ```
 It will create a dataset of images named `img-1`, `img-2`, and so on.
-About the 80% of the images you take will be stored in `dataset/training/images`, 
-and the rest of the images in `dataset/validation/images`.
+About 90% of the images you take will be stored in `dataset/train/images`, 
+and the rest of the images in `dataset/test/images`.
 
 ## Usage
 The image below shows the building of a dataset of Rubik's cube images. 

@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='picman',
-    version='1.0.0',
+    version='2.0.0',
     packages=[''],
     url='https://gitlab.com/francescoracciatti/picman',
     license='MIT',

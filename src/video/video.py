@@ -23,28 +23,30 @@ class VideoHandler(object):
     class RGBColor(Enum):
         GREEN = (0, 255, 0)
 
-    def __init__(self, dst_path_training: str, dst_path_validation: str, name: str, size_training: float) -> None:
+    def __init__(self, dst_path_training: str, dst_path_validation: str, name: str, ratio: float, index: int) -> None:
         """
 
         :param dst_path_training: the path to the training set
         :param dst_path_validation: the path to the validation
         :param name: the base-name for images, for example 'img'
-        :param size_training: the size of the training set over the entire data set
+        :param ratio: the ratio of the training set over the entire data set
+        :param index: the index of the video device
         """
         self.dst_path_training = dst_path_training
         self.dst_path_validation = dst_path_validation
         self.name = name
-        self.size_training = size_training
+        self.ratio = ratio
+        self.index = index
 
-        if size_training < 0.0 or size_training > 1.0:
-            raise ValueError("size of training set must be in range [0.0, 1.0]")
+        if ratio < 0.0 or ratio > 1.0:
+            raise ValueError("ratio of training set must be in range [0.0, 1.0]")
 
     def run(self) -> None:
         """
         Start capturing the video.
         """
         # Reads video
-        video = cv.VideoCapture(0)  # WebCam
+        video = cv.VideoCapture(self.index)
         width = int(video.get(cv.CAP_PROP_FRAME_WIDTH))
         height = int(video.get(cv.CAP_PROP_FRAME_HEIGHT))
 
@@ -109,9 +111,8 @@ class VideoHandler(object):
                 logging.info(f"Got space command, storing image {filename}")
 
                 # Chooses where to store the image
-                dst = ''
                 r = np.random.random_sample()
-                if r < self.size_training:
+                if r < self.ratio:
                     dst = self.dst_path_training
                     count_training += 1
                 else:
