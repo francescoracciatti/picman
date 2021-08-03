@@ -1,6 +1,3 @@
-![picman_image](logo/logo.png)
-
-\
 Picman is a Python3 based tool that will help you to easily populate training and validation sets of raw images, 
 taken from your video device.   
  
