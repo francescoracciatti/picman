@@ -28,25 +28,26 @@ If any problem occurs, please, open an issue or email me.
 That's all!
 
 ### Run Picman
-You can run Picman from PyCharm, or via Terminal.
-
-In both cases, note that the working directory is `../picman/src` and the script path is `../picman/src/picman.py`. 
+You can run Picman from PyCharm, or via Terminal. The script path is `../picman/src/picman.py`.\
+Note that Picman will create the dataset folder in your current working directory.
 
 ###### Run via PyCharm
-You have to configure the working directory, the script path, and the parameters, as shown [here](doc/img/pycharm-config.png).\
+You have to create a run configuration before running, as shown [here](doc/img/pycharm-config.png). 
+In detail, you have to set your working directory, for example `abs_path_to/picman/`,
+and the script path `abs_path_to/picman/src/picman.py`.\
 Then run.
 
 ###### Run via Terminal (the hard way)
-You have to export the Picman root directory `../picman/` in `PYTHONPATH`.\
+You have to export the Picman absolute path `abs_path_to/picman/src/` in `PYTHONPATH`.\
 Then run.
 ```shell
 (venv)$ export PYTHONPATH=$PYTHONPATH:my_path_to_picman
-(venv)$ cd picman/src
-(venv)/picman/src$ python -d picman.py
+(venv)$ cd picman
+(venv)/picman$ python src/picman.py -r 0.8
 ```
 
-Note that the parameter `-d ../dataset` avoids Picman creating the dataset folder inside the `src` folder.
-See the customization parameters below.
+In the examples above, the parameter `-r 0.8` sets a ratio of the training set over the whole dataset of about 80%.\
+See below for the detailed list of customization parameters.
 
 ### Custom parameters 
 You can specify several parameters to customize Picman, as described in the following.
@@ -66,7 +67,7 @@ Please read our [contributing instructions](CONTRIBUTING.md) and our [code of co
 for details on the process of submitting requests to us.
 
 # Versioning
-We use [SemVer](https://semver.org/) for versioning. For the versions available, see the tags on this repository.
+We use [SemVer](https://semver.org/) for versioning. For the versions available, see the releases on this repository.
 
 # License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) for details.
